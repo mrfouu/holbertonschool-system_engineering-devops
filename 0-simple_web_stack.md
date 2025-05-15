@@ -80,6 +80,8 @@ graph TD
     AppServer <--> Database
 
 ```
+
+## Visual Representation of the User's Journey
 ```mermaid	
 graph TD
     User[User Browser] -->|HTTP Request| DNS
