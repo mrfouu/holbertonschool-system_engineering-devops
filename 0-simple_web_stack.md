@@ -64,61 +64,23 @@ Here’s a textual representation of the design for the single-server infrastruc
 ```mermaid
 
 graph TD
-    %% DNS Resolution
-    Browser[["Browser
-    - Initiates request
-    - Sends DNS query"]] -->|1. DNS Query| DNS[["DNS Server
-    - Resolves domain
-    - Returns 8.8.8.8"]]
-    
-    %% Server Components
-    DNS -->|2. HTTP Request| Server[["Physical Server: 8.8.8.8
-    - Hosts all components"]]
-    
-    subgraph Server
-        Web[["Web Server (NGINX)
-        - Port 80/443
-        - Handles HTTP/S
-        - Reverse proxy"]]
-        
-        App[["Application Server
-        - Python/Node.js/PHP
-        - Business logic
-        - Dynamic content"]]
-        
-        Files[["Application Files
-        - HTML/CSS/JS
-        - Templates
-        - Static assets"]]
-        
-        DB[["Database (MySQL)
-        - Port 3306
-        - Tables/Indexes
-        - Persistent storage"]]
-        
-        %% Connections
-        Web -->|3. Proxy Pass| App
-        App -->|4. Reads/Writes| Files
-        App -->|5. SQL Queries| DB
-    end
-    
-    %% Response Flow
-    Web -->|6. HTTP Response| Browser
-    
-    %% Styling
-    classDef dns fill:#e3f2fd,stroke:#42a5f5;
-    classDef server fill:#f5f5f5,stroke:#616161;
-    classDef web fill:#e8f5e9,stroke:#66bb6a;
-    classDef app fill:#e1f5fe,stroke:#29b6f6;
-    classDef files fill:#fff8e1,stroke:#ffca28;
-    classDef db fill:#ffebee,stroke:#ef5350;
-    
-    class DNS dns;
-    class Server server;
-    class Web web;
-    class App app;
-    class Files files;
-    class DB db;
+    DomainName["Domain Name: foobar.com - A Record -> 8.8.8.8"]
+    Server["Server 8.8.8.8"]
+
+    WebServer["Web Server (Nginx)"]
+    AppServer["Application Server (PHP)"]
+    AppFiles["Application Files (Code Base)"]
+    Database["Database (MySQL)"]
+
+    DomainName --> Server
+    Server --> WebServer
+    Server --> AppServer
+
+    AppServer --> AppFiles
+    AppFiles --> Database
+
+    WebServer <--> AppServer
+    AppServer <--> Database
 
 ```
 
