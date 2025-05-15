@@ -41,7 +41,9 @@ graph TD
 
     Server2Box --> WebServer2
     WebServer2 --> AppServer2
+    DBReplica --> Codebase
     AppServer2 --> DBReplica
+    
 
     DBPrimary <--> DBReplica
 
