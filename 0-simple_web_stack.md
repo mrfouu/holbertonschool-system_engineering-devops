@@ -78,3 +78,33 @@ graph TD
 
     WebServer <--> AppServer
     AppServer <--> Database
+
+```
+
+graph TD
+    User[User Browser] -->|HTTP Request| DNS
+    DNS -->|A Record| Server
+
+    subgraph "Server 8.8.8.8 (Linux OS)"
+        Web[Nginx Web Server]
+        App[Application Server]
+        DB[MySQL Database]
+        
+        subgraph "Application Files"
+            Controllers["/app/controllers (Business logic)"]
+            Models["/app/models (Database interactions)"]
+            Views["/app/views (Templates)"]
+            Public["/public (Static assets)"]
+            Config["/config (Settings)"]
+        end
+
+        Web -->|Serves| Public
+        Web -->|Routes to| App
+        App -->|Executes| Controllers
+        App -->|Uses| Models
+        Models -->|Queries| DB
+        Controllers -->|Renders| Views
+        Views -->|Returns HTML| Web
+    end
+
+```
