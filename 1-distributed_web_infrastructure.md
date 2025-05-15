@@ -29,6 +29,7 @@ graph TD
         WebServer2["Web Server (Nginx)"]
         AppServer2["Application Server"]
         DBReplica["Database (Replica)"]
+        CodeBase["Application Files (Codebase)"]
     end
 
     DomainName --> LoadBalancer
@@ -41,9 +42,8 @@ graph TD
 
     Server2Box --> WebServer2
     WebServer2 --> AppServer2
-    DBReplica --> Codebase
     AppServer2 --> DBReplica
-    
+    DBReplica --> CodeBase
 
     DBPrimary <--> DBReplica
 
