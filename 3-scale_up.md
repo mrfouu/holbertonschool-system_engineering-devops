@@ -21,6 +21,7 @@ graph TD
 
     subgraph Application Servers
         App1["Application Server 1"]
+        App3["Application Server 3"]
         App2["Application Server 2"]
         WS1 --> App1
         WS2 --> App2
