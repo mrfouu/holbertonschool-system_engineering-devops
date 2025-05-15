@@ -115,6 +115,7 @@ Each server includes the following components:
 | **Single Points of Failure (SPOF)** | The load balancer and the primary database are SPOFs. Their failure would affect the entire infrastructure. |
 | **Security Issues**        | Without a firewall or HTTPS, the system is vulnerable to attacks and data interception.             |
 | **No Monitoring**          | Without monitoring tools, it’s difficult to detect performance issues, downtime, or replication delays. |
+| **trafic**| this trafic if unencrypted and unauthenticated it can be intercepted by a third party. |
 
 ---
 
