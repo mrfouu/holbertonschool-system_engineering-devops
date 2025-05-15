@@ -80,7 +80,7 @@ graph TD
     AppServer <--> Database
 
 ```
-
+```mermaid	
 graph TD
     User[User Browser] -->|HTTP Request| DNS
     DNS -->|A Record| Server
