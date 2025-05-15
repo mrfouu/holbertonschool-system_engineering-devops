@@ -20,7 +20,7 @@ Role: Simplifies access to the website for users.
 DNS Record: The www subdomain is typically configured using an A record (Address Record) to associate it with the server's IP.
 
 2. The Server
-A physical or virtual machine hosting all components of the stack (web server, application server, application code, and database).
+A physical or virtual machine hosting all components of the stack (web server, application server, application code, and database, data center).
 
 Role: Centralized resource that serves the website to users.
 
