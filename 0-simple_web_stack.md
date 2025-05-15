@@ -60,25 +60,27 @@ A single server cannot handle high traffic. If the incoming requests exceed the 
 ## Visual Representation
 Here’s a textual representation of the design for the single-server infrastructure:
 
-```plaintext
+```mermaid
 
-                          +--------------------------+
-                          |  Domain Name: foobar.com |
-                          |   A Record -> 8.8.8.8    |
-                          +--------------------------+
-                                     |
-                                     v
-                              +-------------+
-                              |   Server    |
-                              |   8.8.8.8   |
-                              +-------------+
-                                     |
-          ---------------------------------------------------
-          |                          |                     |
-   +-------------+         +-----------------+      +---------------+
-   |  Web Server |         | Application     |      |    Database    |
-   |   (Nginx)   | <-----> | Server (PHP)    | <--> |   (MySQL)      |
-   +-------------+         +-----------------+      +---------------+
+graph TD
+    DomainName["Domain Name: foobar.com - A Record -> 8.8.8.8"]
+    Server["Server 8.8.8.8"]
+
+    WebServer["Web Server (Nginx)"]
+    AppServer["Application Server (PHP)"]
+    Database["Database (MySQL)"]
+
+    DomainName --> Server
+    Server --> WebServer
+    Server --> AppServer
+    Server --> Database
+
+    WebServer <--> AppServer
+    AppServer <--> Database
+
+```
+
+
    
 
 
