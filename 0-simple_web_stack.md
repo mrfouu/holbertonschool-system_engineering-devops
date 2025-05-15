@@ -45,7 +45,8 @@ Role: Stores and retrieves structured data (e.g., user accounts, blog posts).
 Accessible by the application server through SQL queries.
 
 7. Communication
-Communication between the user’s computer and the server occurs over HTTP or HTTPS protocols. Secure communication uses HTTPS with SSL/TLS encryption.
+Communication between the user’s computer and the server occurs over HTTP or HTTPS protocols. Secure communication uses HTTPS with SSL/TLS encryption, TCP/IP Connection: Browser establishes connection via HTTP/HTTPS.
+
 
 3. Issues with the Infrastructure
 1. SPOF (Single Point of Failure)
@@ -77,12 +78,3 @@ graph TD
 
     WebServer <--> AppServer
     AppServer <--> Database
-
-```
-
-
-   
-
-
-
-   
