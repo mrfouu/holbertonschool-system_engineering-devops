@@ -124,37 +124,39 @@ graph TD
 
 
 
-
-   ```mermaid
+```mermaid
 graph TD
-    subgraph Load Balancer Cluster
+    subgraph Load_Balancer_Cluster["Load Balancer Cluster"]
         LB1["Load Balancer 1 (HAProxy)"]
         LB2["Load Balancer 2 (HAProxy)"]
-        LB1 --- LB2
+        LB1 -- heartbeat --> LB2
     end
 
-    subgraph Web Servers
+    subgraph Web_Servers["Web Servers"]
         WS1["Web Server 1 (Nginx)"]
         WS2["Web Server 2 (Nginx)"]
-        LB1 --> WS1
-        LB1 --> WS2
-        LB2 --> WS1
-        LB2 --> WS2
     end
 
-    subgraph Application Servers
+    subgraph Application_Servers["Application Servers"]
         App1["Application Server 1"]
         App2["Application Server 2"]
-        WS1 --> App1
-        WS2 --> App2
     end
 
-    subgraph Database Cluster
+    subgraph Database_Cluster["Database Cluster"]
         DBPrimary["Primary MySQL Server"]
         DBReplica1["Replica MySQL Server 1"]
         DBReplica2["Replica MySQL Server 2"]
-        App1 --> DBPrimary
-        App2 --> DBPrimary
-        DBPrimary --- DBReplica1
-        DBPrimary --- DBReplica2
     end
+
+    %% Connections
+    LB1 --> WS1
+    LB1 --> WS2
+    LB2 --> WS1
+    LB2 --> WS2
+    WS1 --> App1
+    WS2 --> App2
+    App1 --> DBPrimary
+    App2 --> DBPrimary
+    DBPrimary --> DBReplica1
+    DBPrimary --> DBReplica2
+    ```
